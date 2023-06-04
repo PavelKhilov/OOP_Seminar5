@@ -1,6 +1,8 @@
 package ru.geekbrains.views;
 
 import ru.geekbrains.models.Table;
+import ru.geekbrains.models.TableModel;
+import ru.geekbrains.presenters.Model;
 import ru.geekbrains.presenters.View;
 import ru.geekbrains.presenters.ViewObserver;
 
@@ -50,7 +52,8 @@ public class BookingView implements View {
      * @param name имя клиента
      */
     public void changeReservationTable(int oldReservation, Date reservationDate, int tableNo, String name){
-
+        cancelReservationTableStatus(oldReservation);
+        observer.onReservationTable(reservationDate, tableNo, name);
     }
 
     /**
@@ -63,6 +66,17 @@ public class BookingView implements View {
         } else {
             System.out.println("Ошибка бронирования столика.\nПовторите попытку позже");
         }
-
+    }
+    /**
+     * Отобразить результат отмены резервирования столика
+     * @param oldReservation номер брони для отмены
+     */
+    @Override
+    public void cancelReservationTableStatus(int oldReservation) {
+        if(oldReservation > 0){
+            System.out.printf("Бронирвоание #%d отменено.\n", oldReservation);
+        } else {
+            System.out.println("Ошибка отмены бронирования столика.\nПовторите попытку позже");
+        }
     }
 }

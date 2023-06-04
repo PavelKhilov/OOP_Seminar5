@@ -22,6 +22,7 @@ public class Main {
         bookingPresenter.updateView();
 
         view.reservationTable(new Date(), 2, "Станислав");
+        view.reservationTable(new Date(), 4, "Виктор");
 
         view.changeReservationTable(1001, new Date(), 3, "Станислав");
     }

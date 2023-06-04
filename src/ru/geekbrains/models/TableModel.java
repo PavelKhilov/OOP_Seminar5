@@ -47,9 +47,31 @@ public class TableModel implements Model {
         //throw new RuntimeException("Невозможно забронировать столик.");
     }
 
+    /**
+     * Отмена бронирования столика
+     * @param oldReservation номер брони для отмены
+     */
+    public void cancelReservationTable(int oldReservation){
+        for (Table table : tables) {
+            if(table.getNo() == oldReservation){
+                table.getReservation().remove(table);
+            }
+        }
+    }
+
     // TODO: Разработать самостоятельно в рамках домащней работы
-    public int changeReservation(int oldReservation, Date reservationDate, int tableNo, String name){
-        return -1;
+
+    /**
+     * Изменение бронирования столика
+     * @param oldReservation номер брони для отмены
+     * @param reservationDate дата бронирвоания
+     * @param tableNo номер столика
+     * @param name имя клиента
+     * @return номер брони
+     */
+    public int changeReservationTable(int oldReservation, Date reservationDate, int tableNo, String name){
+        cancelReservationTable(oldReservation);
+        return reservationTable(reservationDate, tableNo, name);
     }
 
 }

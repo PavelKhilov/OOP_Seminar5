@@ -3,6 +3,7 @@ package ru.geekbrains.presenters;
 import ru.geekbrains.models.Table;
 
 import java.util.Collection;
+import java.util.Date;
 
 public interface View {
 
@@ -23,4 +24,11 @@ public interface View {
      * @param reservationId номер брони
      */
     void showReservationTableStatus(int reservationId);
+
+    /**
+     * Отобразить результат отмены резервирования столика
+     * @param oldReservation номер брони
+     */
+    void cancelReservationTableStatus(int oldReservation);
+
 }
